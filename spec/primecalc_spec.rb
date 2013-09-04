@@ -28,7 +28,7 @@ describe "A primes calculation" do
   
   it "prints multiplication array" do
     ourArray = @primeCalc.calculatePrimesUpTo(100)
-    @primeCalc.printMultiplicationTable(ourArray).should_not raise_error()
+    @primeCalc.printMultiplicationTable(ourArray.first(10)).should_not raise_error()
   end
   
   it "properly aligns tabular value" do
