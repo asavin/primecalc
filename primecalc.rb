@@ -1,10 +1,15 @@
-puts 'Hello world. Now for some prime numbers calculation.'
+#
+# A simple prime calculation app
+# Also displays a multiplication table
+# By Alexander Savin, alexander.savin@boogiesoftware.com
+#
 
 #
 # Implementing a classic Sieve algorithm
 # as described here: http://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
 #
 
+class PrimeCalc
 def calculatePrimesUpTo(max)
   if validatePrimeInput(max)
     # Initializing array with the first prime number
@@ -16,7 +21,7 @@ def calculatePrimesUpTo(max)
 
     while !allCandidates.empty? do
       myPrimes << allCandidates.first
-      puts "Added new prime: " + myPrimes.last.to_s
+      puts "Discovered a new prime: " + myPrimes.last.to_s
       allCandidates.delete(myPrimes.last)
 
       # Removing all candidates divisible by last calculated prime
@@ -27,8 +32,7 @@ def calculatePrimesUpTo(max)
       end
     end
 
-    puts "Final result: " + myPrimes.to_s
-    return myPrimes
+    myPrimes
   else
     puts "Wrong max input"
   end
@@ -85,6 +89,4 @@ def alignTabularValue(value)
   
   value
 end
-
-primesArray = calculatePrimesUpTo(100)
-printMultiplicationTable(primesArray[0...10])
+end
