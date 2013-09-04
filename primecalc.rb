@@ -28,6 +28,7 @@ def calculatePrimesUpTo(max)
     end
 
     puts "Final result: " + myPrimes.to_s
+    return myPrimes
   else
     puts "Wrong max input"
   end
@@ -47,7 +48,43 @@ end
 # and prints results into a neat table
 #
 def printMultiplicationTable(numArray)
+  puts "\nPrime numbers multiplication table"
   
+  # Printing beautified first row with initial margin
+  firstRow = "        "
+  numArray.each do |i|
+    firstRow += alignTabularValue(i.to_s) + " | "
+  end
+  
+  puts firstRow
+  
+  numArray.each do |i|
+    printString = alignTabularValue(i.to_s) + ' | '
+    numArray.each do |ii|
+      result = (i * ii).to_s
+      
+      printString += alignTabularValue(result) + ' | '
+    end
+    puts printString
+  end
+  
+  puts "\n"
 end
 
-calculatePrimesUpTo(100)
+def alignTabularValue(value)
+  # A constant for table column width
+  tabularWidth = 5
+  
+  # Aligning table columns
+  if value.length < tabularWidth
+    padding = tabularWidth - value.length
+    padding.times do
+      value += " "
+    end
+  end
+  
+  value
+end
+
+primesArray = calculatePrimesUpTo(100)
+printMultiplicationTable(primesArray[0...10])
